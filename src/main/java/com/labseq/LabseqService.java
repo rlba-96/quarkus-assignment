@@ -18,7 +18,7 @@ public class LabseqService {
 
     public long getLabseqValue(int n) {
         if (n < 0) {
-            throw new IllegalArgumentException("Index must be non-negative");
+            throw new IllegalArgumentException("Input must");
         }
 
         // Return cached if already computed
