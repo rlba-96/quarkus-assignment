@@ -19,11 +19,14 @@ public class LabseqResource {
     @Path("/{n}")
     public Response getLabseq(@PathParam("n") int n) {
         if (n < 0) {
-            System.out.println("Input cannot be negative");
-            return Response.status(Response.Status.BAD_REQUEST).entity("Input cannot be negative").build();
+            LabseqError labseqError = new LabseqError();
+            labseqError.setMessage("Input cannot be negative");
+
+            return Response.status(Response.Status.BAD_REQUEST).entity(labseqError).build();
         }
 
         long result = service.getLabseqValue(n);
+
         LabseqResponse response = new LabseqResponse();
         response.setInput(n);
         response.setValue(result);
